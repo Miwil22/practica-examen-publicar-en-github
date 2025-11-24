@@ -50,6 +50,25 @@
     <h2>Subtítulo</h2>
     <p>Segundo elemento de parrafo</p>
     <h1>¡HALA MADRID!</h1>
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        const ojos = document.querySelectorAll(".ojo");
+
+        ojos.forEach((ojo) => {
+          const rect = ojo.getBoundingClientRect();
+          const xCentro = rect.left + rect.width / 2;
+          const yCentro = rect.top + rect.height / 2;
+
+          const angulo = Math.atan2(e.pageX - xCentro, e.pageY - yCentro);
+
+          const radio = 5;
+          const x = Math.sin(angulo) * radio;
+          const y = Math.cos(angulo) * radio;
+
+          ojo.style.transform = `translate(${x}px, ${y}px)`;
+        });
+      });
+    </script>
     <footer>Este es el pie de página ~ Año 2005</footer>
   </body>
 </html>
